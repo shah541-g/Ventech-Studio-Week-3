@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  />
+  <link rel="stylesheet" href="index.css">
+  <title>Document</title>
+</head>
+<body>
+  <main class="d-flex flex-column justify-content-center align-items-center gap-4">
+  <section id="alert-component"></section>
+  <section id="badge-component"></section>
+  <section id="btn-component"></section>
+  <section id="card-component"></setion>
+    </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let loadComponents = async (componentName, fileName) => {
+      let res = await fetch(fileName);
+      let html = await res.text();
+      document.getElementById(`${componentName}-component`).innerHTML = html;
+    }
+    loadComponents('alert','Component/alert/alert.html')
+    loadComponents('btn','Component/button/button.html')
+    loadComponents('badge','Component/badge/badge.html')
+    loadComponents('card','Component/card/card.html')
+  </script>
+</body>
+</html>

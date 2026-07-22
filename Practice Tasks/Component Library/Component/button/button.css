@@ -1,0 +1,26 @@
+
+.btn-tech{
+background: linear-gradient(135deg,#0F172A,#111827,#0B1120);
+    color:#F8FAFC;
+    border:2px solid #3B82F6;
+    border-radius:999px;
+    padding:16px 38px;
+
+    font-family:"Orbitron",sans-serif;
+    font-size:18px;
+    font-weight:600;
+    letter-spacing:2px;
+    cursor: pointer;
+
+    box-shadow:
+        0 0 8px #38BDF8,
+        0 0 20px rgba(56,189,248,.45);
+
+    transition:.3s;
+}
+.btn-tech:hover{
+   border-color:#38BDF8;
+    box-shadow:
+        0 0 15px #38BDF8,
+        0 0 40px rgba(56,189,248,.6);
+}
