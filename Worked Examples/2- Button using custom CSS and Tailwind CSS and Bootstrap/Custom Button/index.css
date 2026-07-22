@@ -1,0 +1,13 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.get-started-btn{
+  all:unset;
+  background:#0d6efd;
+  color: white;
+  padding: 0.5rem 0.8rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 5px;
+  cursor: pointer;
+}

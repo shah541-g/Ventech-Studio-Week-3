@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ur-Latn">
+<head>
+<meta charset="UTF-8">
+<title>CSS Study Paper · Tailwind CSS</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #0d1117;
+    color: #c9d1d9;
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    padding: 38px 56px 34px 56px;
+    page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #38bdf8;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h1.section-title {
+    font-size: 23px;
+    color: #f0f6fc;
+    font-weight: 800;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #21262d;
+    padding-bottom: 10px;
+  }
+  h2.sub {
+    font-size: 14.5px;
+    color: #67e8f9;
+    font-weight: 700;
+    margin: 16px 0 6px 0;
+    letter-spacing: .3px;
+  }
+  p { margin-bottom: 8px; color: #c9d1d9; }
+  strong { color: #f0f6fc; }
+
+  .box {
+    border: 1px solid #21262d;
+    background: #11161d;
+    border-radius: 8px;
+    padding: 10px 16px;
+    margin: 9px 0;
+  }
+  .box-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+  }
+  .problem .box-label { background:#3d1e24; color:#ff7b72; }
+  .solution .box-label { background:#132e21; color:#3fb950; }
+  .golden .box-label { background:#332b06; color:#e3b341; }
+  .takeaway .box-label { background:#0d2a3d; color:#58a6ff; }
+  .anti .box-label { background:#3d1e24; color:#ff7b72; }
+  .better .box-label { background:#132e21; color:#3fb950; }
+  .note .box-label { background:#241a3d; color:#bc8cff; }
+
+  pre {
+    background: #0a0e14;
+    border: 1px solid #21262d;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 11.3px;
+    line-height: 1.48;
+    overflow: hidden;
+    margin: 8px 0;
+    white-space: pre-wrap;
+  }
+  .c-sel { color: #7ee787; }
+  .c-prop { color: #79c0ff; }
+  .c-val { color: #ffa657; }
+  .c-str { color: #a5d6ff; }
+  .c-com { color: #6e7681; font-style: italic; }
+  .c-tag { color: #ff7b72; }
+  .c-attr { color: #d2a8ff; }
+  .c-punc { color: #c9d1d9; }
+  .c-cls { color: #f2cc60; }
+
+  table { width: 100%; border-collapse: collapse; margin: 9px 0; font-size: 12px; }
+  th, td { border: 1px solid #21262d; padding: 6px 9px; text-align: left; }
+  th { background: #161b22; color: #f0f6fc; font-weight: 700; }
+  td { color: #c9d1d9; }
+
+  .swatch-row { display: flex; gap: 8px; margin: 10px 0; }
+  .swatch { flex: 1; border-radius: 8px; overflow: hidden; border: 1px solid #21262d; }
+  .swatch .fill { height: 38px; }
+  .swatch .label { background: #11161d; padding: 5px 6px; font-size: 9.5px; font-family: monospace; color: #c9d1d9; }
+
+  .comp-demo { display:flex; gap:12px; flex-wrap:wrap; align-items:center; padding: 12px; background:#11161d; border:1px solid #21262d; border-radius:10px; margin:9px 0; }
+
+  .page-footer {
+    position: absolute;
+    bottom: 24px; left: 56px; right: 56px;
+    display:flex; justify-content:space-between;
+    font-size: 9.5px; color: #484f58;
+    border-top: 1px solid #21262d; padding-top: 8px;
+  }
+  ul.custom { margin: 8px 0 8px 4px; list-style:none; }
+  ul.custom li { padding-left:16px; position:relative; margin-bottom:6px; }
+  ul.custom li::before { content:"›"; position:absolute; left:0; color:#38bdf8; font-weight:800; }
+
+  .tw-btn { padding:9px 18px; border-radius:8px; font-weight:600; font-size:13px; display:inline-block; }
+</style>
+</head>
+<body>
+
+<!-- ===================== 38 ===================== -->
+<div class="page">
+  <div class="eyebrow">38 — TAILWIND CSS</div>
+  <h1 class="section-title">Tailwind Kya Hai, Aur Install Kaise Karein?</h1>
+
+  <p>Tailwind CSS ek utility-first CSS framework hai — matlab yeh humein pehle se likhi hui CSS classes deta hai (flexbox, padding, colors, borders waghera ke liye) jo hum directly HTML mein apply karte hain, bina khud CSS likhe.</p>
+
+  <div class="box note">
+    <span class="box-label">Kaam Kaise Karta Hai</span>
+    <p>Tailwind CSS core team ne already saari common CSS likh rakhi hai — ek class add karo (jaise <code>flex</code>, <code>p-4</code>), design turant apply ho jata hai. Yeh kisi bhi framework (Next.js, Vue, plain HTML) ke sath kaam karta hai.</p>
+  </div>
+
+  <h2 class="sub">Installation (Framework Ke Sath)</h2>
+  <pre><span class="c-com"># Step 1 — Packages install karo</span>
+npm install -D tailwindcss postcss autoprefixer
+
+<span class="c-com"># Step 2 — Config file generate karo</span>
+npx tailwindcss init</pre>
+
+  <pre><span class="c-com">// tailwind.config.js — batana zaroori hai konsi files scan karni hain</span>
+<span class="c-val">module</span>.<span class="c-prop">exports</span> <span class="c-punc">=</span> {
+  <span class="c-attr">content</span>: [
+    <span class="c-str">'./app/**/*.{js,ts,jsx,tsx}'</span>,   <span class="c-com">// Next.js 13+ app router</span>
+  ],
+}</pre>
+
+  <pre><span class="c-com">/* global.css — teeno layers import karna zaroori */</span>
+<span class="c-sel">@tailwind</span> base;
+<span class="c-sel">@tailwind</span> components;
+<span class="c-sel">@tailwind</span> utilities;</pre>
+
+  <div class="box golden">
+    <span class="box-label">Zaroori Baat</span>
+    <p><code>content</code> array Tailwind ko batata hai konsi files scan karni hain taake wo unme use hui classes dhoond kar sirf wahi CSS generate kare — is se final CSS file bohot chhoti aur fast rehti hai (JIT — Just-In-Time engine).</p>
+  </div>
+
+  <h2 class="sub">Aur Kahan Use Ho Sakta Hai?</h2>
+  <ul class="custom">
+    <li><strong>CLI</strong> — Tailwind ka apna installer tool.</li>
+    <li><strong>Framework Guides</strong> — Next.js, Vue, Angular, SvelteKit, Gatsby, Phoenix waghera ke liye ready steps.</li>
+    <li><strong>CDN</strong> — sirf ek <code>&lt;script&gt;</code> tag se, single HTML file, email template, ya plugin ke liye — koi build step nahi chahiye.</li>
+  </ul>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS</span><span>38</span></div>
+</div>
+
+<!-- ===================== 39 ===================== -->
+<div class="page">
+  <div class="eyebrow">39 — CORE CONCEPT</div>
+  <h1 class="section-title">Utility-First Mindset — Traditional CSS Se Farq</h1>
+
+  <p><strong>Traditional approach:</strong> pehle HTML likho, phir usay classes se target karke alag se CSS file mein rules likho. Har element ke liye custom CSS likhni parti hai.</p>
+  <p><strong>Tailwind approach:</strong> HTML mein hi directly utility classes add karo — koi separate CSS likhne ki zaroorat nahi.</p>
+
+  <div class="box problem">
+    <span class="box-label">Traditional</span>
+    <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"card"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+
+<span class="c-sel">.card</span> <span class="c-punc">{</span>
+  <span class="c-prop">display</span><span class="c-punc">:</span> <span class="c-val">flex</span><span class="c-punc">;</span>
+  <span class="c-prop">padding</span><span class="c-punc">:</span> <span class="c-val">16px</span><span class="c-punc">;</span>
+  <span class="c-prop">max-width</span><span class="c-punc">:</span> <span class="c-val">400px</span><span class="c-punc">;</span>
+  <span class="c-prop">background</span><span class="c-punc">:</span> <span class="c-val">white</span><span class="c-punc">;</span>
+  <span class="c-prop">border-radius</span><span class="c-punc">:</span> <span class="c-val">8px</span><span class="c-punc">;</span>
+<span class="c-punc">}</span></pre>
+  </div>
+
+  <div class="box solution">
+    <span class="box-label">Tailwind</span>
+    <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"flex p-4 max-w-[400px] bg-white rounded-lg"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-com">/* koi alag CSS file nahi chahiye */</span></pre>
+  </div>
+
+  <h2 class="sub">Inline Style Se Behtar Kyun Hai?</h2>
+  <table>
+    <tr><th>Faida</th><th>Wazahat</th></tr>
+    <tr><td>Predefined Design System</td><td>Colors, spacing, sizes pehle se ek consistent scale mein available hain</td></tr>
+    <tr><td>Responsive From Day 1</td><td>Breakpoint prefixes (<code>md:</code>, <code>lg:</code>) inline style mein possible nahi hote</td></tr>
+    <tr><td>State Variants</td><td><code>hover:</code>, <code>focus:</code> jaise modifiers inline style se nahi ho sakte</td></tr>
+    <tr><td>Consistency</td><td>Har jagah same scale use hone se design coherent rehta hai</td></tr>
+  </table>
+
+  <div class="box takeaway">
+    <span class="box-label">Takeaway</span>
+    <p>Tailwind "CSS likhna band karo" nahi kehta — balke "baar baar wahi CSS mat likho" kehta hai. Jo cheez already available hai usay reuse karo.</p>
+  </div>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS</span><span>39</span></div>
+</div>
+
+<!-- ===================== 40 ===================== -->
+<div class="page">
+  <div class="eyebrow">40 — COLORS</div>
+  <h1 class="section-title">Color System — Shades Aur On-Demand Generation</h1>
+
+  <p>Tailwind ek bohot bada color palette deta hai — har color (jaise green, blue, red) ke <strong>10 shades</strong> hoti hain: 50 (sabse halka) se 900 (sabse gehra) tak.</p>
+
+  <div class="swatch-row">
+    <div class="swatch"><div class="fill" style="background:#f0fdf4"></div><div class="label">green-50</div></div>
+    <div class="swatch"><div class="fill" style="background:#86efac"></div><div class="label">green-300</div></div>
+    <div class="swatch"><div class="fill" style="background:#16a34a"></div><div class="label">green-600</div></div>
+    <div class="swatch"><div class="fill" style="background:#14532d"></div><div class="label">green-900</div></div>
+  </div>
+
+  <pre><span class="c-tag">&lt;h1</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"text-green-600"</span><span class="c-tag">&gt;</span>Hello World<span class="c-tag">&lt;/h1&gt;</span>
+<span class="c-tag">&lt;h1</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"bg-green-600 text-white"</span><span class="c-tag">&gt;</span>Hello World<span class="c-tag">&lt;/h1&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"border border-green-600"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span></pre>
+
+  <div class="box golden">
+    <span class="box-label">Pattern Pehchano</span>
+    <p><code>text-</code>, <code>bg-</code>, <code>border-</code> — sirf prefix badalta hai, color naming system (jaise <code>green-600</code>) hamesha same rehta hai. Ek dafa pattern samajh liya to sab colors ke liye same tareeqa chalta hai.</p>
+  </div>
+
+  <h2 class="sub">JIT — On-Demand CSS Generation</h2>
+  <p>Jab tum <code>text-green-600</code> use karte ho, Tailwind us waqt <strong>sirf yeh ek class</strong> apni final CSS file mein generate karta hai — poora color palette pehle se generate nahi karta.</p>
+  <div class="box takeaway">
+    <span class="box-label">Kyun Zaroori Hai</span>
+    <p>Is wajah se production CSS file bohot chhoti rehti hai — sirf wahi classes shamil hoti hain jo tumne actually use ki hain, chahe Tailwind ke paas hazaron possible classes ho sakti hain.</p>
+  </div>
+
+  <h2 class="sub">Vs Code Tip</h2>
+  <p><strong>Tailwind CSS IntelliSense</strong> extension zaroor install karo — yeh autocomplete deta hai aur galat/undefined class names ko highlight karta hai (jaise sirf <code>text-green</code> likhna kaam nahi karega, shade number dena zaroori hai).</p>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS</span><span>40</span></div>
+</div>
+
+<!-- ===================== 41 ===================== -->
+<div class="page">
+  <div class="eyebrow">41 — MODIFIERS</div>
+  <h1 class="section-title">Responsive Aur State Modifiers</h1>
+
+  <p>Modifiers wo prefixes hain jo class ke aage lagakar uska behavior specific condition (screen size, state) mein change karte hain.</p>
+
+  <h2 class="sub">Responsive Breakpoints</h2>
+  <table>
+    <tr><th>Prefix</th><th>Min-Width</th></tr>
+    <tr><td>(none)</td><td>0px — mobile-first base</td></tr>
+    <tr><td><code>sm:</code></td><td>640px</td></tr>
+    <tr><td><code>md:</code></td><td>768px</td></tr>
+    <tr><td><code>lg:</code></td><td>1024px</td></tr>
+    <tr><td><code>xl:</code></td><td>1280px</td></tr>
+    <tr><td><code>2xl:</code></td><td>1536px</td></tr>
+  </table>
+
+  <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"w-full md:w-1/2"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-com">/* Mobile par full width, 768px+ par half width — yeh khud ek min-width media query hai */</span></pre>
+
+  <div class="box golden">
+    <span class="box-label">Connection</span>
+    <p>Yeh wahi mobile-first "adding complexity" pattern hai jo humne plain CSS mein Section 07 par seekha tha — Tailwind sirf usay ek chhote prefix mein compress kar deta hai.</p>
+  </div>
+
+  <h2 class="sub">State Modifiers</h2>
+  <pre><span class="c-tag">&lt;button</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"bg-blue-600 hover:bg-blue-500 focus:ring-4 active:bg-blue-700"</span><span class="c-tag">&gt;</span>
+  Save
+<span class="c-tag">&lt;/button&gt;</span></pre>
+
+  <table>
+    <tr><th>Modifier</th><th>Kab Trigger Hota Hai</th></tr>
+    <tr><td><code>hover:</code></td><td>Mouse element ke upar ho</td></tr>
+    <tr><td><code>focus:</code></td><td>Element par keyboard/click focus ho (inputs, buttons)</td></tr>
+    <tr><td><code>active:</code></td><td>Click ke waqt (pressed state)</td></tr>
+    <tr><td><code>first:</code> / <code>last:</code></td><td>Siblings mein pehla ya aakhri element</td></tr>
+    <tr><td><code>even:</code> / <code>odd:</code></td><td>Even/odd position wale siblings (zebra striping)</td></tr>
+    <tr><td><code>before:</code> / <code>after:</code></td><td>Pseudo-elements ::before / ::after</td></tr>
+    <tr><td><code>placeholder:</code></td><td>Input placeholder text</td></tr>
+    <tr><td><code>selection:</code></td><td>User text select kare to us highlight ka style</td></tr>
+    <tr><td><code>dark:</code></td><td>Dark mode active ho</td></tr>
+  </table>
+
+  <div class="box takeaway">
+    <span class="box-label">Stacking Modifiers</span>
+    <p>Modifiers stack ho sakte hain: <code>dark:hover:bg-slate-700</code> — matlab "dark mode mein, aur jab hover ho, to yeh background lagao". Responsive aur state dono ek sath combine ho sakte hain.</p>
+  </div>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS</span><span>41</span></div>
+</div>
+
+<!-- ===================== 42 ===================== -->
+<div class="page">
+  <div class="eyebrow">42 — CUSTOMIZATION</div>
+  <h1 class="section-title">tailwind.config.js — Apna Design System Banana</h1>
+
+  <p>Tailwind ka sabse powerful hissa yeh hai ke poora framework <strong>customize</strong> ho sakta hai — colors, spacing, fonts, breakpoints, sab kuch <code>tailwind.config.js</code> mein control hota hai.</p>
+
+  <pre><span class="c-val">module</span>.<span class="c-prop">exports</span> <span class="c-punc">=</span> {
+  <span class="c-attr">theme</span>: {
+    <span class="c-attr">extend</span>: {
+      <span class="c-attr">colors</span>: {
+        <span class="c-attr">vuejs</span>: <span class="c-str">'#42b883'</span>,   <span class="c-com">// naya custom color add hua</span>
+      },
+      <span class="c-attr">spacing</span>: {
+        <span class="c-str">'1'</span>: <span class="c-str">'8px'</span>,       <span class="c-com">// space-1 ki value override</span>
+      },
+      <span class="c-attr">fontFamily</span>: {
+        <span class="c-attr">sans</span>: [<span class="c-str">'Inter'</span>, <span class="c-str">'sans-serif'</span>],
+      },
+    },
+  },
+}</pre>
+
+  <div class="box golden">
+    <span class="box-label"><code>theme</code> vs <code>extend</code></span>
+    <p>Agar tum direct <code>theme.colors</code> mein likhoge, to Tailwind ke <strong>saare default colors overwrite</strong> ho jayenge — sirf tumhare naye colors bachenge. Agar <code>theme.extend.colors</code> mein likho, to Tailwind ka original palette bhi rehta hai aur tumhara naya color <strong>upar add</strong> ho jata hai.</p>
+  </div>
+
+  <p>Ab yeh custom color kahin bhi use ho sakta hai — jaisa built-in color hota hai:</p>
+  <pre><span class="c-tag">&lt;p</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"text-vuejs"</span><span class="c-tag">&gt;</span>Custom brand color<span class="c-tag">&lt;/p&gt;</span></pre>
+
+  <h2 class="sub">Arbitrary Values — Square Bracket Syntax</h2>
+  <p>Agar koi one-off value chahiye jo config mein register karne ki zaroorat nahi, seedha class ke andar likh sakte ho:</p>
+  <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"bg-[#7c3aed] w-[137px]"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span></pre>
+
+  <h2 class="sub">@apply — Reuse Karna, Bina Repeat Kiye</h2>
+  <pre><span class="c-sel">.btn-primary</span> <span class="c-punc">{</span>
+  <span class="c-sel">@apply</span> bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition;
+<span class="c-punc">}</span></pre>
+  <p>Jab koi group of utility classes baar baar repeat ho raha ho, <code>@apply</code> se unhe ek naam de sakte ho — is se HTML saaf rehta hai aur ek jagah change karne se sab jagah update ho jata hai.</p>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS</span><span>42</span></div>
+</div>
+
+<!-- ===================== 43 ===================== -->
+<div class="page">
+  <div class="eyebrow">43 — TYPOGRAPHY</div>
+  <h1 class="section-title">Text: Size, Weight, Decoration, Behavior</h1>
+
+  <table>
+    <tr><th>Category</th><th>Classes</th></tr>
+    <tr><td>Size</td><td><code>text-xs</code> → <code>text-9xl</code> (0.75rem se progressively bada)</td></tr>
+    <tr><td>Weight</td><td><code>font-light</code>, <code>font-normal</code>, <code>font-semibold</code>, <code>font-bold</code></td></tr>
+    <tr><td>Style</td><td><code>italic</code>, <code>not-italic</code></td></tr>
+    <tr><td>Case</td><td><code>uppercase</code>, <code>lowercase</code>, <code>capitalize</code>, <code>normal-case</code></td></tr>
+    <tr><td>Decoration</td><td><code>underline</code>, <code>overline</code>, <code>line-through</code>, <code>no-underline</code></td></tr>
+  </table>
+
+  <div class="box note">
+    <span class="box-label">Zaroori Note</span>
+    <p>Tailwind H1/H2/H3 par koi default bold/size style apply nahi karta — reset kiya hua hota hai. Har size manually <code>text-4xl font-bold</code> jaisi classes se dena parta hai. Agar <code>capitalize</code> use kiya, to woh <strong>har word</strong> ka pehla letter capitalize karega, sirf sentence ka nahi.</p>
+  </div>
+
+  <h2 class="sub">Underline Ko Style Karna</h2>
+  <pre><span class="c-tag">&lt;a</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"underline decoration-red-500 decoration-wavy decoration-2 underline-offset-4"</span><span class="c-tag">&gt;</span>
+  Link
+<span class="c-tag">&lt;/a&gt;</span>
+<span class="c-com">/* decoration-color, decoration-style (dotted/double/wavy), decoration-thickness, offset — sab alag control */</span></pre>
+
+  <h2 class="sub">Line Height</h2>
+  <p><code>leading-none/tight/snug/normal/relaxed/loose</code> — number-based classes (<code>leading-4</code>, <code>leading-8</code>) pixel/rem based hain, lekin named classes (<code>normal</code>, <code>snug</code>) zyada readable aur maintain karne mein aasan hain.</p>
+
+  <h2 class="sub">Text Overflow Aur Wrapping</h2>
+  <table>
+    <tr><th>Class</th><th>Behavior</th></tr>
+    <tr><td><code>truncate</code></td><td>Ek line mein cut karke <code>...</code> laga deta hai (nowrap + overflow hidden + ellipsis)</td></tr>
+    <tr><td><code>text-ellipsis</code></td><td>Sirf overflow par ellipsis, wrap control alag se</td></tr>
+    <tr><td><code>whitespace-nowrap</code></td><td>Text line break nahi karta, ek hi line mein rehta hai</td></tr>
+    <tr><td><code>whitespace-pre-line</code></td><td>Original spaces/newlines preserve karta hai</td></tr>
+    <tr><td><code>break-words</code></td><td>Lambe words zaroorat parne par beech se break ho jate hain</td></tr>
+    <tr><td><code>break-all</code></td><td>Har character break ho sakta hai — content ke hisaab se fit hota hai</td></tr>
+  </table>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS</span><span>43</span></div>
+</div>
+
+<!-- ===================== 44 ===================== -->
+<div class="page">
+  <div class="eyebrow">44 — SPACING</div>
+  <h1 class="section-title">Padding, Margin, Aur Space-Between</h1>
+
+  <p>Tailwind ka spacing scale numbers par based hai — har number ek fix pixel/rem value ko represent karta hai (jaise <code>4</code> = 16px, kyunke 1 unit = 4px).</p>
+
+  <table>
+    <tr><th>Prefix</th><th>Direction</th></tr>
+    <tr><td><code>p-4</code></td><td>Sab taraf padding</td></tr>
+    <tr><td><code>pt-</code> / <code>pb-</code> / <code>pl-</code> / <code>pr-</code></td><td>Top / Bottom / Left / Right</td></tr>
+    <tr><td><code>px-</code> / <code>py-</code></td><td>Horizontal (left+right) / Vertical (top+bottom)</td></tr>
+    <tr><td><code>m-</code>, <code>mt-</code>, <code>mx-</code> waghera</td><td>Margin — bilkul padding jaisa hi pattern</td></tr>
+  </table>
+
+  <div class="box golden">
+    <span class="box-label">Yaad Rakho</span>
+    <p><strong>Padding</strong> = element ke andar space (content aur border ke darmiyan). <strong>Margin</strong> = element ke bahar space (element aur neighbours ke darmiyan). Yeh fundamental farq plain CSS wala hi hai, Tailwind sirf naam chhota kar deta hai.</p>
+  </div>
+
+  <h2 class="sub">Negative Margins</h2>
+  <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"-mt-4"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-com">/* minus sign class se pehle — element ko upar/peeche khinch sakta hai, overlap ke liye useful */</span></pre>
+
+  <h2 class="sub">Space-Between — Smart Spacing</h2>
+  <p>Agar siblings ke darmiyan gap chahiye (na ke bahar), <code>space-x-*</code> / <code>space-y-*</code> use karo — yeh automatically sirf beech mein margin lagata hai, pehle/aakhri element ke bahar nahi.</p>
+
+  <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"flex space-x-4"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div&gt;</span>Sidebar<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;div&gt;</span>Main Content<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-com">/* space-y-* column layout ke liye, space-x-* row layout ke liye */</span></pre>
+
+  <div class="box takeaway">
+    <span class="box-label">Takeaway</span>
+    <p><code>space-x/y</code> internally margin hi lagata hai, lekin manually "sirf beech walon ko margin do" likhne se bachata hai — same intent jo <code>gap</code> property (flex/grid) deta hai.</p>
+  </div>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS</span><span>44</span></div>
+</div>
+
+<!-- ===================== 45 ===================== -->
+<div class="page">
+  <div class="eyebrow">45 — SIZING</div>
+  <h1 class="section-title">Width, Height, Min/Max Variants</h1>
+
+  <table>
+    <tr><th>Class</th><th>Matlab</th></tr>
+    <tr><td><code>w-16</code></td><td>Fixed width (Tailwind ki spacing scale se, 64px)</td></tr>
+    <tr><td><code>w-1/2</code>, <code>w-1/3</code></td><td>Percentage width (fractions)</td></tr>
+    <tr><td><code>w-full</code></td><td>100% width</td></tr>
+    <tr><td><code>h-16</code>, <code>h-screen</code></td><td>Fixed height / 100vh</td></tr>
+    <tr><td><code>min-w-min</code> / <code>min-w-max</code></td><td>CSS <code>min-content</code> / <code>max-content</code> ke shortcuts</td></tr>
+    <tr><td><code>max-w-xl</code>, <code>max-w-screen-lg</code></td><td>Predefined maximum widths — wrapper/container ke liye ideal</td></tr>
+  </table>
+
+  <div class="box golden">
+    <span class="box-label">Section 03 Se Connection</span>
+    <p>Yeh wahi <code>max-width</code> wrapper pattern hai jo humne plain CSS mein seekha tha — Tailwind mein sirf <code>max-w-xl</code> jaisi ready class use kar lete hain, custom breakpoint values likhne ki zaroorat nahi.</p>
+  </div>
+
+  <h2 class="sub">Sidebar + Main Content Example</h2>
+  <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"flex"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;aside</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"w-1/5 min-h-screen"</span><span class="c-tag">&gt;</span>Sidebar<span class="c-tag">&lt;/aside&gt;</span>
+  <span class="c-tag">&lt;main</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"w-4/5"</span><span class="c-tag">&gt;</span>Main Content<span class="c-tag">&lt;/main&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-com">/* 1/5 + 4/5 = poori width — fractions ko add karke total 1 (5/5) rakhna zaroori hai */</span></pre>
+
+  <div class="box problem">
+    <span class="box-label">Common Mistake</span>
+    <p>Agar fractions ka total 1 (jaise 5/5) na banaya jaye — jaise sirf <code>w-2/5</code> aur <code>w-1/5</code> — to space missing rehta hai aur layout adjust nahi hota jaisa expect kiya tha.</p>
+  </div>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS</span><span>45</span></div>
+</div>
+
+<!-- ===================== 46 ===================== -->
+<div class="page">
+  <div class="eyebrow">46 — FLEXBOX</div>
+  <h1 class="section-title">Flex Utilities — Tailwind Mein</h1>
+
+  <p>Plain CSS ka <code>display: flex</code> aur uski sari properties Tailwind mein directly utility classes ban jaati hain.</p>
+
+  <table>
+    <tr><th>Plain CSS</th><th>Tailwind Class</th></tr>
+    <tr><td><code>display: flex</code></td><td><code>flex</code></td></tr>
+    <tr><td><code>flex-direction: row/column</code></td><td><code>flex-row</code> / <code>flex-col</code></td></tr>
+    <tr><td><code>flex-direction: row-reverse</code></td><td><code>flex-row-reverse</code></td></tr>
+    <tr><td><code>flex-wrap: wrap</code></td><td><code>flex-wrap</code></td></tr>
+    <tr><td><code>flex-grow: 1</code></td><td><code>grow</code></td></tr>
+    <tr><td><code>flex-basis: 25%</code></td><td><code>basis-1/4</code></td></tr>
+    <tr><td><code>justify-content: space-between</code></td><td><code>justify-between</code></td></tr>
+    <tr><td><code>align-items: center</code></td><td><code>items-center</code></td></tr>
+  </table>
+
+  <h2 class="sub">Justify Content — Main Axis Alignment</h2>
+  <table>
+    <tr><td><code>justify-start</code></td><td>Shuru mein (default)</td></tr>
+    <tr><td><code>justify-center</code></td><td>Center mein</td></tr>
+    <tr><td><code>justify-end</code></td><td>Aakhir mein</td></tr>
+    <tr><td><code>justify-between</code></td><td>Pehle aur aakhri element edges par, beech mein equal space</td></tr>
+    <tr><td><code>justify-evenly</code></td><td>Har item ke around bilkul equal space (edges samet)</td></tr>
+  </table>
+
+  <h2 class="sub">Align Items — Cross Axis Alignment</h2>
+  <p><code>items-start</code> / <code>items-center</code> / <code>items-end</code> — cross-axis (vertical, jab row layout ho) par elements ko align karte hain. <code>items-baseline</code> unhe text ki baseline par align karta hai, jab elements ki heights alag ho.</p>
+
+  <h2 class="sub">Responsive Flex Direction</h2>
+  <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"flex flex-col md:flex-row"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;aside&gt;</span>Sidebar<span class="c-tag">&lt;/aside&gt;</span>
+  <span class="c-tag">&lt;main&gt;</span>Main<span class="c-tag">&lt;/main&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-com">/* Mobile par column (stacked), md+ par row — Section 07 ka min-width "adding complexity" pattern */</span></pre>
+
+  <div class="box takeaway">
+    <span class="box-label">Golden Rule</span>
+    <p><code>flex-*</code> classes (direction, wrap) hamesha <code>flex</code> class ke sath honi chahiye — akele <code>flex-row</code> ya <code>flex-wrap</code> kuch nahi karega jab tak parent par <code>display: flex</code> na ho.</p>
+  </div>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS</span><span>46</span></div>
+</div>
+
+<!-- ===================== 47 ===================== -->
+<div class="page">
+  <div class="eyebrow">47 — GRID</div>
+  <h1 class="section-title">Grid Utilities — Columns, Rows, Autoflow</h1>
+
+  <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"grid grid-cols-4 gap-4"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div&gt;</span>1<span class="c-tag">&lt;/div&gt;</span> <span class="c-tag">&lt;div&gt;</span>2<span class="c-tag">&lt;/div&gt;</span> <span class="c-tag">&lt;div&gt;</span>3<span class="c-tag">&lt;/div&gt;</span> <span class="c-tag">&lt;div&gt;</span>4<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;div&gt;</span>5<span class="c-tag">&lt;/div&gt;</span> <span class="c-com">&lt;!-- automatically agli line par wrap hoga --&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></pre>
+
+  <p><code>grid-cols-1</code> se <code>grid-cols-12</code> tak available hain. Responsive breakpoints ke sath combine karke desktop par zyada, mobile par kam columns diye ja sakte hain: <code>grid-cols-1 md:grid-cols-2 lg:grid-cols-4</code>.</p>
+
+  <h2 class="sub">Column Span — Ek Item Ko Bada Karna</h2>
+  <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"grid grid-cols-3 gap-4"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"col-span-2"</span><span class="c-tag">&gt;</span>Bada item<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;div&gt;</span>Chhota item<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-com">/* col-start-*, col-end-* se specific position bhi define kar saktay hain */</span></pre>
+
+  <h2 class="sub">Auto-Fit Content — Bina Fixed 12-Column Ke</h2>
+  <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"grid grid-cols-none auto-cols-max grid-flow-col gap-4"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-com">/* Har column apne content ke hisaab se size leta hai — Section 06 ka intrinsic design idea */</span></pre>
+
+  <h2 class="sub">Grid Auto-Flow — Empty Spaces Fill Karna</h2>
+  <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"grid grid-flow-row-dense grid-cols-3 grid-rows-3 gap-4"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"col-span-2"</span><span class="c-tag">&gt;</span>1<span class="c-tag">&lt;/div&gt;</span>
+  ...
+<span class="c-tag">&lt;/div&gt;</span></pre>
+  <div class="box golden">
+    <span class="box-label">Dense Flow Ka Faida</span>
+    <p><code>grid-flow-row-dense</code> Tailwind ko batata hai ke agar koi item empty gap ke baad chhota fit ho sakta hai, to usay us gap mein "peeche khaali jagah" bhar do — ordering thodi badal sakti hai, lekin layout mein khaali boxes nahi rehte.</p>
+  </div>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS</span><span>47</span></div>
+</div>
+
+<!-- ===================== 48 ===================== -->
+<div class="page">
+  <div class="eyebrow">48 — LAYOUT</div>
+  <h1 class="section-title">Container, Display, Position, Overflow, Z-Index</h1>
+
+  <h2 class="sub">Container</h2>
+  <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"container mx-auto px-4"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span></pre>
+  <p><code>container</code> class har breakpoint par apni max-width khud set karti hai (jaise <code>lg:</code> par 1024px). <code>mx-auto</code> se yeh horizontally center hoti hai — ya <code>theme.container.center: true</code> config karke yeh automatic ho sakta hai. <code>px-4</code> hamesha add karo taake content edges se chipke nahi.</p>
+
+  <h2 class="sub">Display</h2>
+  <p><code>block</code>, <code>inline-block</code>, <code>flex</code>, <code>grid</code>, <code>hidden</code> (display:none) — plain CSS ke display values ka direct mapping.</p>
+
+  <h2 class="sub">Position</h2>
+  <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"relative h-16 w-16 bg-red-500"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"absolute -top-2 -left-2 h-6 w-6 bg-green-500"</span><span class="c-tag">&gt;</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-com">/* Parent par relative, child par absolute — child ab parent ke corners ke relative position hota hai */</span></pre>
+  <p><code>top-0</code>, <code>left-0</code>, <code>inset-2</code> (sab sides), aur <code>fixed</code> class sticky headers/footers ke liye.</p>
+
+  <h2 class="sub">Overflow</h2>
+  <table>
+    <tr><td><code>overflow-visible</code></td><td>Content box se bahar bhi dikh sakta hai (default)</td></tr>
+    <tr><td><code>overflow-hidden</code></td><td>Box ke bahar jo bhi jaye, chhup jata hai</td></tr>
+    <tr><td><code>overflow-auto</code></td><td>Zaroorat parne par scroll create hota hai</td></tr>
+    <tr><td><code>overflow-x-auto</code> / <code>overflow-y-auto</code></td><td>Sirf horizontal ya vertical scroll</td></tr>
+  </table>
+
+  <h2 class="sub">Visibility Aur Z-Index</h2>
+  <p><code>invisible</code> element ko chhupata hai lekin layout space reserve rehti hai (<code>hidden</code> se farq — jo poori tarah layout se hata deta hai). <code>z-10</code>, <code>z-20</code>... stacking order control karte hain — bada number upar rehta hai.</p>
+
+  <h2 class="sub">Object Position (Images)</h2>
+  <pre><span class="c-tag">&lt;img</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"h-40 w-40 object-cover object-top"</span> <span class="c-attr">src</span><span class="c-punc">=</span><span class="c-str">"..."</span><span class="c-tag">&gt;</span>
+<span class="c-com">/* object-cover crop karta hai, object-top image ke andar crop ka focus point set karta hai */</span></pre>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS</span><span>48</span></div>
+</div>
+
+<!-- ===================== 49 ===================== -->
+<div class="page">
+  <div class="eyebrow">49 — BORDERS</div>
+  <h1 class="section-title">Border, Divide, Ring, Outline</h1>
+
+  <h2 class="sub">Border</h2>
+  <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"border-2 border-rose-600 border-dashed rounded-lg"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-com">/* border-{width} border-{color} border-{style: solid/dashed/dotted/double/none} */</span></pre>
+  <p>Directional borders bhi milte hain: <code>border-t</code>, <code>border-l-4</code> waghera — plain CSS ke <code>border-top</code>, <code>border-left-width</code> jaisa.</p>
+
+  <h2 class="sub">Divide — Children Ke Beech Border</h2>
+  <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"divide-y divide-red-500"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div&gt;</span>Item 1<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;div&gt;</span>Item 2<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;div&gt;</span>Item 3<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-com">/* Sirf beech mein border lagta hai — pehle/aakhri item par nahi, list-jaise UI ke liye ideal */</span></pre>
+
+  <h2 class="sub">Outline</h2>
+  <p><code>outline-none</code> browser ka default focus outline hata deta hai — lekin accessibility ke liye usay hatane ke baad apna replacement zaroor do (jaise <code>focus:ring</code>).</p>
+
+  <h2 class="sub">Ring — Box-Shadow Based Focus/Highlight</h2>
+  <pre><span class="c-tag">&lt;button</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"outline-none focus:ring-4 focus:ring-offset-2 focus:ring-blue-400"</span><span class="c-tag">&gt;</span>
+  Click
+<span class="c-tag">&lt;/button&gt;</span></pre>
+
+  <div class="box golden">
+    <span class="box-label">Ring Kya Hai</span>
+    <p>Ring dar-asal ek solid box-shadow hai jo element ke around ek "trace"/glow effect create karta hai — accessibility ke liye keyboard-focus dikhane ka behtareen tareeqa hai, kyunke yeh layout ko shift nahi karta (border ki tarah space nahi leta).</p>
+  </div>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS</span><span>49</span></div>
+</div>
+
+<!-- ===================== 50 ===================== -->
+<div class="page">
+  <div class="eyebrow">50 — EFFECTS & FILTERS</div>
+  <h1 class="section-title">Shadow, Opacity, Blur, Aur Image Filters</h1>
+
+  <h2 class="sub">Box Shadow</h2>
+  <pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"shadow-lg shadow-cyan-500/50"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-com">/* shadow-{sm|md|lg|xl|2xl|inner|none}, color/opacity slash syntax se control hoti hai */</span></pre>
+  <p><code>/50</code> jaisa slash syntax opacity 50% set karta hai — yeh sirf shadow nahi, kisi bhi color-based class (bg, text, border) par kaam karta hai.</p>
+
+  <h2 class="sub">Opacity</h2>
+  <pre><span class="c-tag">&lt;button</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"opacity-50"</span> <span class="c-attr">disabled</span><span class="c-tag">&gt;</span>Disabled<span class="c-tag">&lt;/button&gt;</span></pre>
+
+  <h2 class="sub">Image Filters</h2>
+  <table>
+    <tr><th>Class</th><th>Effect</th></tr>
+    <tr><td><code>blur-sm</code> → <code>blur-2xl</code></td><td>Image ko dhundla karta hai</td></tr>
+    <tr><td><code>brightness-50</code> / <code>brightness-125</code></td><td>0–200 range mein roshni kam/zyada</td></tr>
+    <tr><td><code>contrast-50</code></td><td>Contrast adjust karta hai</td></tr>
+    <tr><td><code>grayscale</code></td><td>Image black & white bana deta hai</td></tr>
+    <tr><td><code>hue-rotate-90</code></td><td>0–180deg tak color hue shift karta hai</td></tr>
+    <tr><td><code>invert</code></td><td>Colors invert karta hai</td></tr>
+    <tr><td><code>saturate-150</code></td><td>Colors zyada vibrant banata hai</td></tr>
+    <tr><td><code>sepia</code></td><td>Purana/vintage look deta hai</td></tr>
+  </table>
+
+  <pre><span class="c-tag">&lt;img</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"blur-sm hover:blur-none transition duration-300"</span> <span class="c-attr">src</span><span class="c-punc">=</span><span class="c-str">"..."</span><span class="c-tag">&gt;</span>
+<span class="c-com">/* Hover par blur hat jata hai — smooth reveal effect */</span></pre>
+
+  <h2 class="sub">Backdrop Filters</h2>
+  <p><code>backdrop-blur-sm</code>, <code>backdrop-brightness-75</code> — yeh element ke <strong>peeche</strong> jo hai usay blur/adjust karta hai, khud element ko nahi (frosted-glass overlay banane ke liye useful).</p>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS</span><span>50</span></div>
+</div>
+
+<!-- ===================== 51 ===================== -->
+<div class="page">
+  <div class="eyebrow">51 — MOTION</div>
+  <h1 class="section-title">Transition, Animation, Transform</h1>
+
+  <h2 class="sub">Transition — Smooth State Change</h2>
+  <pre><span class="c-tag">&lt;button</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"transition duration-300 ease-in-out hover:-translate-y-1"</span><span class="c-tag">&gt;</span>
+  Hover Me
+<span class="c-tag">&lt;/button&gt;</span></pre>
+  <table>
+    <tr><td><code>transition</code></td><td>Common properties (color, background, transform) par default smooth change enable karta hai</td></tr>
+    <tr><td><code>duration-300</code></td><td>Kitni der mein transition complete ho (milliseconds)</td></tr>
+    <tr><td><code>delay-1000</code></td><td>Transition shuru hone se pehle kitni der ruke</td></tr>
+    <tr><td><code>ease-in</code> / <code>ease-out</code> / <code>ease-in-out</code></td><td>Speed curve — start/end par slow ya fast</td></tr>
+  </table>
+
+  <h2 class="sub">Built-in Animations</h2>
+  <table>
+    <tr><td><code>animate-spin</code></td><td>Loader/spinner — continuous rotation</td></tr>
+    <tr><td><code>animate-ping</code></td><td>Notification "glow" effect — radar-jaisa expand/fade</td></tr>
+    <tr><td><code>animate-pulse</code></td><td>Skeleton loading screens ke liye opacity pulse</td></tr>
+    <tr><td><code>animate-bounce</code></td><td>Upar-neeche jump karta hai</td></tr>
+  </table>
+
+  <h2 class="sub">Transform — Scale, Rotate, Translate, Skew</h2>
+  <pre><span class="c-tag">&lt;img</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"scale-100 hover:scale-125 rotate-0 hover:rotate-6 origin-top-left transition"</span> <span class="c-attr">src</span><span class="c-punc">=</span><span class="c-str">"..."</span><span class="c-tag">&gt;</span></pre>
+  <table>
+    <tr><td><code>scale-{n}</code></td><td>0–150 range mein size badhana/ghatana</td></tr>
+    <tr><td><code>rotate-{deg}</code></td><td>0–180 degrees rotate</td></tr>
+    <tr><td><code>translate-x-*</code> / <code>translate-y-*</code></td><td>Horizontal/vertical move karna</td></tr>
+    <tr><td><code>skew-x-*</code> / <code>skew-y-*</code></td><td>Slant/tilt effect</td></tr>
+    <tr><td><code>origin-*</code></td><td>Transform kis point se shuru ho (default center)</td></tr>
+  </table>
+
+  <div class="box golden">
+    <span class="box-label">Conditional Transform (React Example)</span>
+    <pre><span class="c-tag">&lt;div</span> <span class="c-attr">className</span><span class="c-punc">=</span><span class="c-punc">{</span><span class="c-str">`transition ${</span><span class="c-val">isOpen</span> <span class="c-punc">?</span> <span class="c-str">'rotate-180'</span> <span class="c-punc">:</span> <span class="c-str">'rotate-0'</span><span class="c-str">}`</span><span class="c-punc">}</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;ArrowIcon</span> <span class="c-tag">/&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></pre>
+    <p>State ke basis par class name dynamically switch karna — dropdown arrow ko rotate karne ka common pattern.</p>
+  </div>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS</span><span>51</span></div>
+</div>
+
+<!-- ===================== 52 ===================== -->
+<div class="page">
+  <div class="eyebrow">52 — CASE STUDY</div>
+  <h1 class="section-title">Apna Mini Design System Banana</h1>
+
+  <p>Yeh saari cheezein combine karke ek chhota design system bana sakte hain — buttons, inputs, checkbox — bilkul wahi component-based tareeqa jo Section 31-35 mein plain CSS ke sath dekha tha.</p>
+
+  <h2 class="sub">Button — Base + Primary/Secondary + Disabled</h2>
+  <pre><span class="c-com">/* globals.css */</span>
+<span class="c-sel">.btn</span> <span class="c-punc">{</span> <span class="c-sel">@apply</span> px-4 py-3 rounded-lg text-white transition duration-300; <span class="c-punc">}</span>
+<span class="c-sel">.btn-primary</span> <span class="c-punc">{</span> <span class="c-sel">@apply</span> bg-blue-600 hover:opacity-80; <span class="c-punc">}</span>
+<span class="c-sel">.btn-secondary</span> <span class="c-punc">{</span> <span class="c-sel">@apply</span> bg-slate-500 hover:opacity-80; <span class="c-punc">}</span>
+<span class="c-sel">.btn:disabled</span> <span class="c-punc">{</span> <span class="c-sel">@apply</span> bg-slate-400/30 hover:opacity-100 cursor-not-allowed; <span class="c-punc">}</span></pre>
+  <pre><span class="c-tag">&lt;button</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"btn btn-primary"</span><span class="c-tag">&gt;</span>Save<span class="c-tag">&lt;/button&gt;</span>
+<span class="c-tag">&lt;button</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"btn btn-secondary"</span><span class="c-tag">&gt;</span>Cancel<span class="c-tag">&lt;/button&gt;</span>
+<span class="c-tag">&lt;button</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"btn btn-primary"</span> <span class="c-attr">disabled</span><span class="c-tag">&gt;</span>Saving...<span class="c-tag">&lt;/button&gt;</span></pre>
+
+  <h2 class="sub">Input — Shared Base</h2>
+  <pre><span class="c-sel">input[type="text"], input[type="date"]</span> <span class="c-punc">{</span>
+  <span class="c-sel">@apply</span> outline-none border border-slate-300 rounded-sm px-1.5 py-1 mb-1;
+<span class="c-punc">}</span>
+<span class="c-sel">input:disabled</span> <span class="c-punc">{</span> <span class="c-sel">@apply</span> bg-slate-100; <span class="c-punc">}</span>
+<span class="c-sel">input::placeholder</span> <span class="c-punc">{</span> <span class="c-sel">@apply</span> italic; <span class="c-punc">}</span></pre>
+
+  <h2 class="sub">Checkbox — Accent Color</h2>
+  <pre><span class="c-tag">&lt;label</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"flex items-start"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;input</span> <span class="c-attr">type</span><span class="c-punc">=</span><span class="c-str">"checkbox"</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"accent-purple-500 mt-0.5 mr-1"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;span</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"text-sm text-slate-500 font-medium leading-4"</span><span class="c-tag">&gt;</span>
+    Terms accept karta hun
+  <span class="c-tag">&lt;/span&gt;</span>
+<span class="c-tag">&lt;/label&gt;</span></pre>
+  <div class="box golden">
+    <span class="box-label">accent-* Ka Faida</span>
+    <p><code>appearance-none</code> se checkbox ka poora native look/check-icon bhi gayab ho jata hai — <code>accent-{color}</code> use karna behtar hai, kyunke yeh sirf color badalta hai aur browser ka native checkmark icon bhi rakhta hai.</p>
+  </div>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS</span><span>52</span></div>
+</div>
+
+<!-- ===================== 53 ===================== -->
+<div class="page">
+  <div class="eyebrow">53 — DARK MODE</div>
+  <h1 class="section-title">Dark Mode — Class Strategy + LocalStorage</h1>
+
+  <pre><span class="c-com">// tailwind.config.js</span>
+<span class="c-val">module</span>.<span class="c-prop">exports</span> <span class="c-punc">=</span> {
+  <span class="c-attr">darkMode</span>: <span class="c-str">'class'</span>,   <span class="c-com">// 'media' bhi option hai (OS preference follow karta hai)</span>
+}</pre>
+
+  <pre><span class="c-tag">&lt;body</span> <span class="c-attr">class</span><span class="c-punc">=</span><span class="c-str">"dark:bg-slate-900 dark:text-white"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/body&gt;</span>
+<span class="c-com">/* Jab &lt;html&gt; ya &lt;body&gt; par "dark" class ho, dark: prefix wali sab classes activate ho jaati hain */</span></pre>
+
+  <h2 class="sub">Toggle Function (React/Next.js)</h2>
+  <pre><span class="c-val">const</span> [darkMode, setDarkMode] <span class="c-punc">=</span> useState(<span class="c-val">undefined</span>);
+
+useEffect(() <span class="c-punc">=&gt;</span> {
+  <span class="c-val">if</span> (darkMode <span class="c-punc">===</span> <span class="c-val">true</span>) {
+    document.documentElement.classList.add(<span class="c-str">'dark'</span>);
+    localStorage.setItem(<span class="c-str">'darkMode'</span>, <span class="c-str">'true'</span>);
+  } <span class="c-val">else if</span> (darkMode <span class="c-punc">===</span> <span class="c-val">false</span>) {
+    document.documentElement.classList.remove(<span class="c-str">'dark'</span>);
+    localStorage.setItem(<span class="c-str">'darkMode'</span>, <span class="c-str">'false'</span>);
+  } <span class="c-val">else</span> {
+    <span class="c-com">// pehli dafa load — localStorage se pichli preference uthao</span>
+    setDarkMode(localStorage.getItem(<span class="c-str">'darkMode'</span>) <span class="c-punc">===</span> <span class="c-str">'true'</span>);
+  }
+}, [darkMode]);</pre>
+
+  <div class="box golden">
+    <span class="box-label">3-State Trick Kyun</span>
+    <p><code>darkMode</code> ko <code>undefined</code> se shuru karna zaroori hai — is se ek teesra "abhi tak decide nahi hua" state milta hai. Agar seedha <code>true/false</code> default rakha jaye, to app hamesha ek theme par load hoga phir localStorage check karke doosri par switch hoga — is se ek "flash" dikhta hai. Undefined state is flash ko avoid karta hai.</p>
+  </div>
+
+  <div class="box note">
+    <span class="box-label">Zaroori Order</span>
+    <p>Toggle button (jo <code>dark</code> class set karta hai) hamesha layout ke sabse top level (<code>&lt;html&gt;</code> ya root <code>&lt;body&gt;</code>) par check hona chahiye, taake children render hone se pehle hi sahi theme decide ho jaye.</p>
+  </div>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS</span><span>53</span></div>
+</div>
+
+<!-- ===================== 54 ===================== -->
+<div class="page">
+  <div class="eyebrow">54 — ACTIVE RECALL</div>
+  <h1 class="section-title">Practice Questions — Tailwind CSS</h1>
+
+  <p><strong>Q1.</strong> Tailwind ka core philosophy traditional CSS se kaise alag hai?</p>
+  <p style="color:#8b949e;">Traditional mein HTML target karke alag CSS likhte hain; Tailwind mein pehle se likhi utility classes HTML mein directly apply hoti hain, alag CSS likhne ki zaroorat nahi.</p>
+
+  <p><strong>Q2.</strong> Tailwind config ke <code>content</code> array ka kya kaam hai?</p>
+  <p style="color:#8b949e;">Batata hai konsi files scan karni hain, taake sirf wahi classes final CSS mein generate hon jo actually project mein use ho rahi hain (JIT engine).</p>
+
+  <p><strong>Q3.</strong> <code>theme.colors</code> mein direct likhna aur <code>theme.extend.colors</code> mein likhna — farq kya hai?</p>
+  <p style="color:#8b949e;">Direct <code>theme.colors</code> Tailwind ke default colors ko overwrite kar deta hai. <code>extend.colors</code> original palette ko rakhte hue naya color upar add karta hai.</p>
+
+  <p><strong>Q4.</strong> Responsive breakpoint prefix (<code>md:</code>) actually CSS mein kya banta hai?</p>
+  <p style="color:#8b949e;">Ek min-width media query — jaise <code>md:</code> ka matlab hai "768px aur us se upar ke screens par".</p>
+
+  <p><strong>Q5.</strong> <code>space-x-4</code> aur simple margin mein practical farq kya hai?</p>
+  <p style="color:#8b949e;"><code>space-x-4</code> sirf siblings ke beech margin lagata hai, pehle/aakhri element ke bahar nahi — is liye manually calculate karne ki zaroorat nahi parti.</p>
+
+  <p><strong>Q6.</strong> <code>truncate</code> class actually kin teen properties ka combination hai?</p>
+  <p style="color:#8b949e;"><code>white-space: nowrap</code>, <code>overflow: hidden</code>, aur <code>text-overflow: ellipsis</code>.</p>
+
+  <p><strong>Q7.</strong> Ring aur border mein bunyadi farq kya hai?</p>
+  <p style="color:#8b949e;">Ring box-shadow-based hota hai, is liye layout space nahi leta (element shift nahi hota) — accessibility-friendly focus indicator ke liye ideal.</p>
+
+  <p><strong>Q8.</strong> <code>@apply</code> directive kis situation mein useful hai?</p>
+  <p style="color:#8b949e;">Jab same utility classes ka group baar baar repeat ho raha ho — unhe ek custom class (jaise <code>.btn-primary</code>) mein combine karke HTML saaf rakha ja sakta hai.</p>
+
+  <p><strong>Q9.</strong> Dark mode toggle mein <code>darkMode</code> state ko <code>undefined</code> se shuru karne ki wajah kya hai?</p>
+  <p style="color:#8b949e;">Taake pehli render par galat theme flash na ho — teesra state ("abhi decide nahi hua") localStorage se sahi value load hone tak wait karta hai.</p>
+
+  <p><strong>Q10.</strong> <code>accent-purple-500</code> checkbox par <code>appearance-none</code> se better kyun hai?</p>
+  <p style="color:#8b949e;">Sirf color change karta hai lekin browser ka native check-icon bhi bacha rehta hai — <code>appearance-none</code> poora custom styling manually dobara banane par majboor kar deta hai.</p>
+
+  <div class="box golden" style="margin-top:18px;">
+    <span class="box-label">Filhal Yahan Tak</span>
+    <p>Yeh section plain CSS notes (Section 1-37) ko Tailwind CSS ke sath connect karta hai — har utility class ke peeche wahi fundamentals hain jo already seekhe ja chuke hain (flex, grid, spacing, responsive design). Agla step: apne project mein Tailwind install karke inhe practically try karna.</p>
+  </div>
+
+  <div class="page-footer"><span>CSS Study Paper · Tailwind CSS · Active Recall</span><span>54</span></div>
+</div>
+
+</body>
+</html>
