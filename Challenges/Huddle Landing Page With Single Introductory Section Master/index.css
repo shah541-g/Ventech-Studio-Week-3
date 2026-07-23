@@ -1,0 +1,30 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background-image: url("./images/bg-mobile.svg");
+}
+.bg-customized{
+  background: hsl(257, 40%, 49%);
+}
+.row{
+  margin-left: 0;
+  margin-right: 0;
+}
+.btn-customized{
+  background-color: white;
+  color: hsl(257, 40%, 49%);
+  box-shadow: 1px 1px 1px rgb(41, 39, 39), -1px -1px 1px rgb(41, 39, 39);
+  width: 80%;
+  border-radius: 20px;
+  transition: 0.3s ease;
+  max-width: 200px;
+}
+.btn-customized:hover{
+  background: hsl(300, 69%, 71%);
+  color: white;
+  transform: scale(1.008);
+  transform: translateY(-4px);
+}
